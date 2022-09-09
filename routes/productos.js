@@ -1,12 +1,11 @@
-const { application } = require('express');
 const express = require('express');
 const router = express.Router();
-const Contenedor = require('../Contenedor/contenedor');
 
-const contenedor = new Contenedor();
+const Manager = require('../manager.js');
+const manager = new Manager();
 
 router.get('/', (req, res) => {
-	let result = contenedor.getAll();
+	let result = manager.getAll();
 	res.send(result);
 });
 
@@ -19,7 +18,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
 	if (!req.body.title || !req.body.price || !req.body.thumbnail)
 		return res.send({ error: 'Dato requerido' });
-	let result = contenedor.createProd(req.body);
+	let result = manager.createProd(req.body);
 	res.send(result);
 });
 

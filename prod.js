@@ -1,3 +1,8 @@
-let archivoProductos = [];
+let products = [
+	{
+		id: 1,
+		title: 'tijera',
+	},
+];
 
-module.exports = archivoProductos;
+module.exports = products;

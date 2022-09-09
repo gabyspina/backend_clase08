@@ -1,31 +1,31 @@
 const fs = require('fs');
 
-const archivoProductos = './prod.json';
+let products = require('./prod.js');
 
-class Contenedor {
+class Manager {
 	createProd = (prod) => {
-		let id = archivoProductos[archivoProductos.length - 1].id + 1;
+		let id = products[products.length - 1].id + 1;
 		prod = {
 			id,
 			...prod,
 		};
-		archivoProductos.push(prod);
-
+		products.push(prod);
+		console.log(prod);
 		return prod;
 	};
 
 	getAll = () => {
-		return archivoProductos;
+		return products;
 	};
 
 	getByID = (id) => {
 		id = parseInt(id);
-		return archivoProductos.find((item) => item.id === id);
+		return products.find((item) => item.id === id);
 	};
 
 	updateByID = (id, product) => {
 		id = parseInt(id);
-		let newProducts = archivoProductos.map((item) => {
+		let newProducts = products.map((item) => {
 			if (item.id === id) {
 				return {
 					id,
@@ -33,7 +33,7 @@ class Contenedor {
 				};
 			} else return item;
 		});
-		archivoProductos = newProducts;
+		products = newProducts;
 		return this.getByID(id);
 	};
 
@@ -44,4 +44,5 @@ class Contenedor {
 		return newProducts;
 	};
 }
-module.exports = Contenedor;
+
+module.exports = Manager;
