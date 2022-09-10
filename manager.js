@@ -18,7 +18,7 @@ class Manager {
 		return products;
 	};
 
-	getByID = (id) => {
+	findByID = (id) => {
 		id = parseInt(id);
 		return products.find((item) => item.id === id);
 	};
@@ -34,7 +34,7 @@ class Manager {
 			} else return item;
 		});
 		products = newProducts;
-		return this.getByID(id);
+		return this.findByID(id);
 	};
 
 	delete = (id) => {
