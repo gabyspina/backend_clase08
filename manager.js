@@ -39,9 +39,9 @@ class Manager {
 
 	delete = (id) => {
 		id = parseInt(id);
-		let newProducts = archivoProductos.filter((item) => item.id !== id);
-		archivoProductos = newProducts;
-		return newProducts;
+		let newProducts = products.filter((item) => item.id !== id);
+		products = newProducts;
+		return products;
 	};
 }
 

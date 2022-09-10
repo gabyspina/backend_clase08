@@ -30,4 +30,9 @@ router.put('/:id', (req, res) => {
 	res.send(result);
 });
 
+router.delete('/:id', (req, res) => {
+	let result = manager.delete(req.params.id);
+	res.send(result);
+});
+
 module.exports = router;
