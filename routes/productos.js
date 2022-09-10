@@ -10,10 +10,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-	let result = manager.findById(req.params.id);
+	let params = req.params.id;
+	console.log(params);
 
-	console.log(result);
-	if (!result) return res.send({ error: 'Producto no existe' });
+	let result = manager.findByID(params);
 	res.send(result);
 });
 
