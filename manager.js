@@ -1,46 +1,20 @@
-const fs = require('fs');
-
 let products = require('./prod.js');
 
 class Manager {
-	createProd = (prod) => {
-		let id = products[products.length - 1].id + 1;
-		prod = {
+	createProd = (producto) => {
+		let id;
+		if (products.length === 0) id = 1;
+		else products[products.length - 1].id + 1;
+		producto.price = parseInt(producto.price);
+		producto = {
 			id,
-			...prod,
+			...producto,
 		};
-		products.push(prod);
-		console.log(prod);
-		return prod;
+		products.push(producto);
+		return producto;
 	};
 
 	getAll = () => {
-		return products;
-	};
-
-	findByID = (id) => {
-		id = parseInt(id);
-		return products.find((item) => item.id === id);
-	};
-
-	updateByID = (id, product) => {
-		id = parseInt(id);
-		let newProducts = products.map((item) => {
-			if (item.id === id) {
-				return {
-					id,
-					...product,
-				};
-			} else return item;
-		});
-		products = newProducts;
-		return this.findByID(id);
-	};
-
-	delete = (id) => {
-		id = parseInt(id);
-		let newProducts = products.filter((item) => item.id !== id);
-		products = newProducts;
 		return products;
 	};
 }
